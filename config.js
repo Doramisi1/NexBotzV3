@@ -134,7 +134,7 @@ global.nameowner = 'ega-ganteng'
 global.umurowner = '100'
 global.asalowner = 'Jawa Barat, Bekasi'
 global.nomorowner = 'wa.me/6283849469400'
-global.pacarowner = cie kepo'
+global.pacarowner = 'cie kepo'
 
 /*============== TEXT ==============*/
 global.wait = '```mohon tunggu...```'
