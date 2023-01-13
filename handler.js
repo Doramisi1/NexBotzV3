@@ -47,21 +47,21 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.exp))
                     user.exp = 0
                 if (!isNumber(user.healt)) 
-                    user.healt = 100
+                    user.healt = 200
                 if (!isNumber(user.title)) 
                     user.title = 0
                 if (!isNumber(user.stamina)) 
-                    user.stamina = 100
+                    user.stamina = 200
                 if (!isNumber(user.haus)) 
                     user.haus = 100
                 if (!isNumber(user.laper)) 
                     user.laper = 100
                 if (!isNumber(user.limit))
-                    user.limit = 10
+                    user.limit = 1000
                 if (!isNumber(user.lastclaim))
                     user.lastclaim = 0
                 if (!isNumber(user.joinlimit)) 
-                    user.joinlimit = 1
+                    user.joinlimit = 100
                 if (!isNumber(user.pc)) 
                     user.pc = 0
                 if (!isNumber(user.ojekk)) 
@@ -97,22 +97,22 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.bannedDate)) 
                     user.bannedDate = 0
                 if (!isNumber(user.level))
-                    user.level = 0
+                    user.level = 25
                 if (!('role' in user))
                     user.role = 'Beginner'
                 if (!('autolevelup' in user))
                     user.autolevelup = true
 
                 if (!isNumber(user.money))
-                    user.money = 0
+                    user.money = 0#1000000
                 if (!isNumber(user.atm))
-                    user.atm = 0
+                    user.atm = 1000
                 if (!isNumber(user.fullatm))
-                    user.fullatm = 0
+                    user.fullatm = 1000
                 if (!isNumber(user.bank))
-                    user.bank = 0
+                    user.bank = 1000
                 if (!isNumber(user.health))
-                    user.health = 100
+                    user.health = 200
                 if (!isNumber(user.potion))
                     user.potion = 0
                 if (!isNumber(user.trash))
@@ -351,11 +351,11 @@ if (!isNumber(user.ayam)) user.ayam = 0
                 if (!user.lbars) 
                     user.lbars = '[▒▒▒▒▒▒▒▒▒]'
                 if (!isNumber(user.joinlimit))
-                    user.joinlimit = 0
+                    user.joinlimit = 100
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
-                    limit: 20,
+                    limit: 1000,
                     lastclaim: 0,
                     registered: false,
                     spammer: 0,
@@ -365,9 +365,9 @@ if (!isNumber(user.ayam)) user.ayam = 0
                     pasangan: '',
                     haus: 100,
                     laper: 100,
-                    stamina : 100,
+                    stamina : 200,
                     pc : 0,
-                    joinlimit: 1,
+                    joinlimit: 100,
                     coin: 0,
                     age: -1,
                     regTime: -1,
@@ -394,11 +394,11 @@ if (!isNumber(user.ayam)) user.ayam = 0
                     BannedReason: '',
 
 
-                    money: 0,
-                    bank: 0,
-                    atm: 0,
-                    fullatm: 0,
-                    health: 100,
+                    money: 100000,
+                    bank: 1000,
+                    atm: 1000,
+                    fullatm: 1000,
+                    health: 200,
                     potion: 10,
                     trash: 0,
                     wood: 0,
@@ -555,9 +555,9 @@ esteh: 0,
                 if (!('isBanned' in chat))
                     chat.isBanned = false
                 if (!('welcome' in chat))
-                    chat.welcome = false
+                    chat.welcome =true
                 if (!('detect' in chat))
-                    chat.detect = false
+                    chat.detect = true
                 if (!('sWelcome' in chat))
                     chat.sWelcome = ''
                 if (!('sBye' in chat))
@@ -587,8 +587,8 @@ esteh: 0,
             } else
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
-                    welcome: false,
-                    detect: false,
+                    welcome: true,
+                    detect: true,
                     sWelcome: '',
                     sBye: '',
                     sPromote: '',
@@ -611,7 +611,7 @@ esteh: 0,
     })
 }
           global.kontak2 = [
-        ['6288221354110', 'NexBotz', 'Creator Bot', 'Creator Bot', true],
+        ['6283802603905', 'NexBotz', 'Creator Bot', 'Creator Bot', true],
         [`${nomorown}`, `${nameown}`, 'Owner Bot', 'Owner Bot', true]
         ]
             let settings = global.db.data.settings[this.user.jid]
