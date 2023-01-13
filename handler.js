@@ -377,7 +377,7 @@ if (!isNumber(user.ayam)) user.ayam = 0
                     banned: false,
                     warn: 0,
                     warning: 0,
-                    level: 0,
+                    level: 25,
                     role: 'Beginner',
                     autolevelup: false,
                     rumahsakit: 0,
@@ -555,7 +555,7 @@ esteh: 0,
                 if (!('isBanned' in chat))
                     chat.isBanned = false
                 if (!('welcome' in chat))
-                    chat.welcome =true
+                    chat.welcome = true
                 if (!('detect' in chat))
                     chat.detect = true
                 if (!('sWelcome' in chat))
