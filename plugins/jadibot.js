@@ -1,11 +1,21 @@
 import pkg from '@adiwajshing/baileys'
-import { join, dirname } from 'path'
 import WebSocket from 'ws'
 import qrcode from 'qrcode'
-import { makeWASocket }  from '../lib/simple.js'
+import simple from '../lib/simple'
 import fs from 'fs'
 
 const { DisconnectReason, MessageRetryMap, useSingleFileAuthState, fetchLatestBaileysVersion, toBuffer } = pkg
+
+const imports = (path) => {
+ path = require.resolve(path)
+  let modules, retry = 0
+  do {
+    if (path in require.cache) delete require.cache[path]
+    modules = require(path)
+    retry++
+  } while ((!modules || (Array.isArray(modules) || modules instanceof String) ? !(modules || []).length : typeof modules == 'object' && !Buffer.isBuffer(modules) ? !(Object.keys(modules || {})).length : true) && retry <= 10)
+  return modules
+}
 
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 
@@ -33,7 +43,7 @@ const config = {
     auth: state, 
     receivedPendingNotifications: false
     }
-    conn = makeWASocket(config)
+    conn = simple.makeWASocket(config)
     let ev = conn.ev
     
     let date = new Date()
@@ -78,11 +88,46 @@ const config = {
         }
     }
     
+    global.tryConnect = function tryConnect(restatConn, close) { 
+        let handlers = imports('../handler')	
+        conn.welcome = 'Hai, @user!\nSelamat datang di grup @subject\n\n@desc'
+        conn.bye = 'Selamat tinggal @user!'
+        conn.spromote = '@user sekarang admin!'
+        conn.sdemote = '@user sekarang bukan admin!'
+        conn.handler = handlers.handler.bind(conn)
+        conn.connectionUpdate = needUpdate.bind(conn)
+        conn.credsUpdate = saveState.bind(conn)
+        conn.onCall = handlers.onCall.bind(conn)
+        conn.onGroupUpdate = handlers.onGroupUpdate.bind(conn)
+    
+        if (restatConn) {
+            try { conn.ws.close() } catch { }
+            conn = {
+                ...conn, ...simple.makeWASocket(config)
+            }
+        }
+        
+        if (!isInit || !close) {
+            ev.off('messages.upsert', conn.handler)
+            ev.off('group-participants.update', conn.onGroupUpdate)
+            ev.off('connection.update', conn.connectionUpdate)
+            ev.off('creds.update', conn.credsUpdate)
+            ev.off('call', conn.onCall)
+        }
+        ev.on('messages.upsert', conn.handler)
+        ev.on('connection.update', conn.connectionUpdate)
+        ev.on('creds.update', conn.credsUpdate)
+        ev.on('call', conn.onCall)
+        ev.on('group-participants.update', conn.onGroupUpdate)
+        isInit = false
+        return true
+    }
+    await global.tryConnect()
 }
 handler.help = ['jadibot']
 handler.tags = ['jadibot']
 handler.command = /^jadibot$/i
-handler.private = true
-handler.premium = true
+handler.private = false
+handler.premium = false
 handler.group = false
 export default handler
