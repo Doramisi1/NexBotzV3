@@ -104,7 +104,7 @@ export async function handler(chatUpdate) {
                     user.autolevelup = true
 
                 if (!isNumber(user.money))
-                    user.money = 0#1000000
+                    user.money = 1000000
                 if (!isNumber(user.atm))
                     user.atm = 1000
                 if (!isNumber(user.fullatm))
@@ -394,7 +394,7 @@ if (!isNumber(user.ayam)) user.ayam = 0
                     BannedReason: '',
 
 
-                    money: 100000,
+                    money: 1000000,
                     bank: 1000,
                     atm: 1000,
                     fullatm: 1000,
