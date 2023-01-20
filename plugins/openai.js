@@ -9,7 +9,7 @@ const openai = new OpenAIApi(configuration);
 
 const response = await openai.createCompletion({
   model: "text-davinci-003",
-  prompt: halo,
+  prompt: text,
   temperature: 0,
   max_tokens: 3000,
   top_p: 1,
