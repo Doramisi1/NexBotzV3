@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { API_KEY_RM_BG } = require('../config');
 
 const EditPhotoHandler = async (text, msg) => {
     const cmd = text.split('/');
@@ -49,7 +48,7 @@ const EditPhotoRequest = async (base64, bg_color) => {
         headers: {
             "accept": "application/json",
             "Content-Type": "application/json",
-            "X-Api-Key": API_KEY_RM_BG,
+            "X-Api-Key": "6S2LsXGkd56cTLxiHdxcUnEv",
         },
     })
         .then((response) => {
