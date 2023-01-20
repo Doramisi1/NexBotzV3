@@ -28,14 +28,6 @@ say(` NexBotz By @NexEp`, {
   colors: ['red', 'magenta']
 })
 
-// #edit_bg/bg_color
-    if (text.includes("#edit_bg/")) {
-        await EditPhotoHandler(text, msg);
-    }
-    // #ask/question?
-    if (text.includes("#ask/")) {
-        await ChatAIHandler(text, msg);
-    }
 
 var isRunning = false
 /**
