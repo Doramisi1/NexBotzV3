@@ -14,6 +14,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(__dirname) // Bring in the ability to create the 'require' method
 const { name, author } = require(join(__dirname, './package.json')) // https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
 const { say } = cfonts
+const qrcode = require('qrcode-terminal');
+const { Client, LocalAuth } = require('whatsapp-web.js');
+const { EditPhotoHandler } = require('./plugins/edit_foto');
 const rl = createInterface(process.stdin, process.stdout)
 
 say('NexEp', {
@@ -26,6 +29,15 @@ say(` NexBotz By @NexEp`, {
   align: 'center',
   colors: ['red', 'magenta']
 })
+
+// #edit_bg/bg_color
+    if (text.includes("#edit_bg/")) {
+        await EditPhotoHandler(text, msg);
+    }
+    // #ask/question?
+    if (text.includes("#ask/")) {
+        await ChatAIHandler(text, msg);
+    })
 
 var isRunning = false
 /**
