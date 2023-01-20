@@ -2,9 +2,7 @@ import { watchFile, unwatchFile } from 'fs'
 import chalk from 'chalk'
 import { fileURLToPath } from 'url'
 import moment from 'moment-timezone'
-module.exports = {
-    API_KEY_RM_BG: "6S2LsXGkd56cTLxiHdxcUnEv"
-    
+
 /*============= WAKTU =============*/
 let wibh = moment.tz('Asia/Jakarta').format('HH')
     let wibm = moment.tz('Asia/Jakarta').format('mm')
