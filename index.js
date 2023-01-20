@@ -37,7 +37,7 @@ say(` NexBotz By @NexEp`, {
     // #ask/question?
     if (text.includes("#ask/")) {
         await ChatAIHandler(text, msg);
-    })
+    }
 
 var isRunning = false
 /**
