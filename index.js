@@ -15,7 +15,6 @@ const require = createRequire(__dirname) // Bring in the ability to create the '
 const { name, author } = require(join(__dirname, './package.json')) // https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
 const { say } = cfonts
 const qrcode = require('qrcode-terminal');
-const { EditPhotoHandler } = require('./plugins/edit_foto');
 const rl = createInterface(process.stdin, process.stdout)
 
 say('NexEp', {
