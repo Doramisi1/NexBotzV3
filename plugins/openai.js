@@ -3,7 +3,7 @@ let handler = async (m, { conn, text }) => {
 if (!text) throw "[!] Masukkan teks."
 
 const configuration = new Configuration({
-  apiKey: "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"
+  apiKey: "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"
 });
 const openai = new OpenAIApi(configuration);
 
