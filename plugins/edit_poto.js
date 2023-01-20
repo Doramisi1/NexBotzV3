@@ -71,9 +71,9 @@ const EditPhotoRequest = async (base64, bg_color) => {
 
 m.reply(response.data.choices[0].text)
     }
-handler.help = ['ai', 'openai']
+handler.help = ['edit', 'editpoto']
 handler.tags = ['info', 'fun']
-handler.command = /^(ai|openai)$/i
+handler.command = /^(edit|editpoto)$/i
 module.exports = {
     EditPhotoHandler
 }
