@@ -15,7 +15,7 @@ await conn.sendButton(m.chat, `ANJAY ${name} WIBU`, 'ʟᴀʀɪ ᴀᴅᴀ ᴡɪʙ
 }
 handler.help = ['jadianime']
 handler.tags = ['anime']
-handler.command = /^(jadianime)$/i
+handler.command = /^(jadianime2)$/i
 handler.limit = 1
 
 export default handler
